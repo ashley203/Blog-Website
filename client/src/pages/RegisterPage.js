@@ -7,15 +7,20 @@ function RegisterPage() {
 
     const registerUser = async (e) => {
         e.preventDefault();
-        const res = await fetch("http://localhost:3001/user/register/", 
-            {method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({username, password})   
-        });
-        if (res.status === 200) {
-            alert("User registered");
-        } else {
-            alert("Failed");
+        if(username.length < 3 || password.length < 3){
+            alert("Username and password must be at least 3 characters in length");
+        }
+        else{
+            const res = await fetch("http://localhost:3001/user/register/", 
+                {method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({username, password})   
+            });
+            if (res.status === 200) {
+                alert("User registered");
+            } else {
+                alert("Failed");
+            }
         }
     }
 
