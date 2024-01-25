@@ -1,9 +1,11 @@
 import {useState} from "react";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [_, setCookies] = useCookies(["access_token"]);
     const navigate = useNavigate();
 
     const loginUser = async (e) => {
@@ -13,17 +15,20 @@ export default function LoginPage() {
         }
         else{
             const res = await fetch("http://localhost:3001/user/login/", 
-                {method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({username, password})   
-            });
+                    {method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({username, password})});
+            console.log(res);
             if (res.status === 200) {
-                alert("User logged in");
-                //localStorage.setItem("userID", res.id);
-                res.json().then(data => {localStorage.setItem("userID", data.id); console.log(data.id)});
-                navigate("/posts");
+                alert("Login Successful");
+                res.json().then(data => {
+                    localStorage.setItem("userID", data.userID);
+                    setCookies("access_token", data.token);
+                    console.log(data.userID);
+                    navigate("/posts");
+                });
             } else {
-                alert("Incorrect username or password");
+                res.json().then(data => alert(data));
             }
         }     
     }

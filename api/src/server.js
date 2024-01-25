@@ -14,7 +14,9 @@ mongoose.connect("mongodb://127.0.0.1:27017/blog", {
     .catch(console.error);
 
 import {userRouter} from "../routes/user.js";
+import {postRouter} from "../routes/post.js";
 
 app.use("/user", userRouter);
+app.use("/post", postRouter);
 
 app.listen(3001, () => console.log("Server listening on port 3001"));
