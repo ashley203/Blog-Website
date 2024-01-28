@@ -1,0 +1,62 @@
+:root{
+    --primary: #909db8;
+}
+.navbar {
+    margin: 0;
+    width: 100%;
+    height: 80px;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+  }
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 25px;
+}
+
+.Post {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    width: 100%;
+    border:1px solid var(--primary);
+    border-radius: 50px;
+}
+
+.Post h1{
+    margin-left: 40px;
+}
+
+.Post h4{
+    margin-left: 40px;
+}
+
+.Post p{
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+
+.Create-Post{
+    display: flex;
+    justify-content: center;
+    transform: translate(-50px);
+    margin-top: 50px;
+}
+
+.Create-Post .title{
+    display: flex;
+    justify-content: center;
+    width: 200%;
+}
+
+.Create-Post .content{
+    display: flex;
+    justify-content: center;
+    width: 200%;
+    height: 300%;
+}

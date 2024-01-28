@@ -1,4 +1,4 @@
-GET http://localhost:3001/post/all-posts/
+GET http://localhost:3001/post/all/
 
 ###
 
@@ -6,10 +6,16 @@ POST http://localhost:3001/post/new/
 Content-Type: application/json
 
 {
-    "title": "Blog post 1",
-    "content": "post 1 content",
+    "title": "Blog post 3",
+    "content": "post 3 content",
     "author": "65a9df783e1e52000ab0d82d"
 
 }
 
 ###
+
+GET http://localhost:3001/post/my-posts/
+
+###
+
+DELETE http://localhost:3001/post/delete/65aa981ebab04ad5baa8100f

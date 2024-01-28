@@ -1,10 +1,9 @@
 import {useState, useEffect} from "react";
-import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 import Post from "../components/post";
 
 export default function PostsPage() {
     const [posts, setPosts] = useState([]);
+    const userID = window.localStorage.getItem("userID");
 
     useEffect( () => {
         GetPosts();
@@ -12,7 +11,7 @@ export default function PostsPage() {
       }, []);
     
     const GetPosts = () => {
-        fetch("http://localhost:3001/post/all")
+        fetch("http://localhost:3001/post/posts/" + userID)
             .then(res => res.json())
             .then(data => setPosts(data))
             .catch(err => console.error("Error: ", err))
@@ -20,7 +19,7 @@ export default function PostsPage() {
 
     return (
         <div className="Posts">
-            <p>Posts: </p>
+            <p>My Posts: </p>
             {posts.map(post => {
                 return (
                     <Post key={post._id} title={post.title} content={post.content} author={post.author} timestamp={post.timestamp}/>
